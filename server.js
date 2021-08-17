@@ -4,7 +4,7 @@ const path = require("path");
 const express = require("express");
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 // everytime an express server is created the following two items will always be here as a basic setup
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
