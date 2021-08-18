@@ -2,7 +2,7 @@
 // THIS is a basic setup for EXPRESS
 const path = require("path");
 const express = require("express");
-
+const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3001;
 // everytime an express server is created the following two items will always be here as a basic setup
@@ -32,14 +32,19 @@ app.listen(PORT, () => console.log("listening on PORT: 3001."));
 // Make backend routes for API
 // app.get /api/notes
 app.get("/api/notes", (req, res) => {
-    res.json(notes);
+    
 });
+
+function readNotes() {
+    let = notes
+    fs.readFile(path.join(__dirname, "./db/db.json"), (err, data) => {
+        notes = data;
+    });  return notes;
+}
+console.log(readNotes());
 // to publish new note app.post /api/notes
 app.post("/api/notes", (req, res) => {
     // make let variable for new entries
-    let newNote = req.body;
-    newNote.id = notes.length;
-    notes.push(newNote);
-    res.json(notes);
+    let newNote =
 });
 // doesn't matter if it has the same name as long as one is GET, POST, DELETE
