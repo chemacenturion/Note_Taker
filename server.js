@@ -31,5 +31,15 @@ app.listen(PORT, () => console.log("listening on PORT: 3001."));
 
 // Make backend routes for API
 // app.get /api/notes
+app.get("/api/notes", (req, res) => {
+    res.json(notes);
+});
 // to publish new note app.post /api/notes
+app.post("/api/notes", (req, res) => {
+    // make let variable for new entries
+    let newNote = req.body;
+    newNote.id = notes.length;
+    notes.push(newNote);
+    res.json(notes);
+});
 // doesn't matter if it has the same name as long as one is GET, POST, DELETE
