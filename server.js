@@ -5,6 +5,11 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const uniqid = require("uniqid")
+
+const dataBase = fs.readFileSync("./db/db.json", "utf-8")
+const data = JSON.parse(dataBase)
+
 // everytime an express server is created the following two items will always be here as a basic setup
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -44,12 +49,30 @@ app.get("/api/notes", (req, res) => {
 // to publish new note app.post /api/notes
 app.post("/api/notes", (req, res) => {
     // make let variable for new entries
-    console.log(req);
-    let newNote = {title: req.body.title, text: req.body.text}
-    fs.readFile(path.join(__dirname, "./db/db.json"), "utf-8", (err, data) => {
-        let arrayDb = JSON.parse(data);
-        // fs.writeFile here res.send new array
-    })
-});
+    const {title, text} = req.body;
+    if ( title && text ) {
+        const newNote = {
+            title,
+            text,
+            id: uniqid (),
+        }
+        data.push(newNote);
+        let newData = JSON.stringify(data)
+        fs.writFile("./db/db.json", newData, (err) => {
+            if (err) {
+                console.log(err);
+                return res.json("Error");
+            }
+            const response = {
+                status: "Success",
+                body: newNote,
+            };
+            return res.json(response);
+        })
+    } else {
+        return res.json("Please complete both note title and text field.");
+    }
+
+    });
 
 // doesn't matter if it has the same name as long as one is GET, POST, DELETE
