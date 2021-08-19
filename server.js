@@ -32,19 +32,24 @@ app.listen(PORT, () => console.log("listening on PORT: 3001."));
 // Make backend routes for API
 // app.get /api/notes
 app.get("/api/notes", (req, res) => {
-    
+    fs.readFile(path.join(__dirname, "./db/db.json"), "utf-8", (err, data) => {
+        res.send(JSON.parse(data))
+    });
 });
 
-function readNotes() {
-    let = notes
-    fs.readFile(path.join(__dirname, "./db/db.json"), (err, data) => {
-        notes = data;
-    });  return notes;
-}
-console.log(readNotes());
+// function readNotes() {
+//     let notes; 
+// }
+
 // to publish new note app.post /api/notes
 app.post("/api/notes", (req, res) => {
     // make let variable for new entries
-    let newNote =
+    console.log(req);
+    let newNote = {title: req.body.title, text: req.body.text}
+    fs.readFile(path.join(__dirname, "./db/db.json"), "utf-8", (err, data) => {
+        let arrayDb = JSON.parse(data);
+        // fs.writeFile here res.send new array
+    })
 });
+
 // doesn't matter if it has the same name as long as one is GET, POST, DELETE
