@@ -14,7 +14,7 @@ To allow a user to utitlize the aforementioned application to create and store n
 * [Questions](#Questions)
 
 ## Demonstration
-![Quick GIF](https://github.com/chemacenturion/README.md-Generator/blob/main/images/Untitled_%20Aug%205,%202021%2012_09%20PM.gif?raw=true)
+![Quick GIF](https://github.com/chemacenturion/Note_Taker/blob/main/public/assets/gif/Untitled_%20Aug%2019,%202021%206_15%20PM.gif?raw=true)
 
 ## Installation
 * To install neccesary dependencies please run the following command:
