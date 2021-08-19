@@ -6,6 +6,7 @@ To allow a user to utitlize the aforementioned application to create and store n
 
 ## Table of Contents:
 * [Demonstration](#Demonstration)
+* [Deployed-Link](#Deployed-Link)
 * [Installation](#Installation)
 * [Usage](#Usage)
 * [License](#License)
@@ -15,6 +16,9 @@ To allow a user to utitlize the aforementioned application to create and store n
 
 ## Demonstration
 ![Quick GIF](https://github.com/chemacenturion/Note_Taker/blob/main/public/assets/gif/Untitled_%20Aug%2019,%202021%206_15%20PM.gif?raw=true)
+
+## Deployed-Link
+*https://gentle-wildwood-44855.herokuapp.com/
 
 ## Installation
 * To install neccesary dependencies please run the following command:
