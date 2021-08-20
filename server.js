@@ -7,8 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const uniqid = require("uniqid")
 
-const dataBase = fs.readFileSync("./db/db.json", "utf-8")
-const data = JSON.parse(dataBase)
+// The following global variables were taken out to make the delete route work.
+// The error was that files needed to be read fresh everytime.
+// const dataBase = fs.readFileSync("./db/db.json", "utf-8")
+// const data = JSON.parse(dataBase)
 
 // everytime an express server is created the following two items will always be here as a basic setup
 app.use(express.json());
