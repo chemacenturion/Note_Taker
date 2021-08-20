@@ -76,10 +76,13 @@ app.post("/api/notes", (req, res) => {
     });
 
 // doesn't matter if it has the same name as long as one is GET, POST, DELETE
-app.delete("/api/notes/:id", (req, res) => {
 
-    let noteId = request.params.id;
-    const noteFilter = data.filter(note => note.id !== noteId);
+// BCs Assisted delete route
+// cannot use global variable data because fresh data needs to be read everytime
+app.delete("/api/notes/:id", (req, res) => {
+    const notes = JSON.parse(fs.readFileSync("./db/db.json", "utf-8"))
+    let noteId = req.params.id;
+    const noteFilter = notes.filter(note => note.id !== noteId);
 
     fs.writeFileSync("./db/db.json", JSON.stringify(noteFilter));
 
