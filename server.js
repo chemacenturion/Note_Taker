@@ -76,3 +76,12 @@ app.post("/api/notes", (req, res) => {
     });
 
 // doesn't matter if it has the same name as long as one is GET, POST, DELETE
+app.delete("/notes/:id", (req, res) => {
+
+    let noteId = request.params.id;
+    const noteFilter = data.noteFilter(note => note.id !== noteId);
+
+    fs.writeFileSync("./db/db.json", JSON.stringify(dataBase));
+
+    res.json(true);
+});
