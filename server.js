@@ -49,6 +49,7 @@ app.get("/api/notes", (req, res) => {
 // to publish new note app.post /api/notes
 app.post("/api/notes", (req, res) => {
     // make let variable for new entries
+    const notes = JSON.parse(fs.readFileSync("./db/db.json", "utf-8"))
     const {title, text} = req.body;
     if ( title && text ) {
         const newNote = {
@@ -56,8 +57,8 @@ app.post("/api/notes", (req, res) => {
             text,
             id: uniqid (),
         }
-        data.push(newNote);
-        let newData = JSON.stringify(data)
+        notes.push(newNote);
+        let newData = JSON.stringify(notes)
         fs.writeFile("./db/db.json", newData, (err) => {
             if (err) {
                 console.log(err);
